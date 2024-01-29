@@ -30,9 +30,15 @@ const MainFlow = () => {
   );
 };
 
-const MainNavigator = () => (
+const MainNavigator = ({
+  initialRouteName = 'OnboardFlow',
+}: {
+  initialRouteName: keyof RootStackParamList;
+}) => (
   <NavigationContainer>
-    <RootStack.Navigator screenOptions={{headerShown: false}}>
+    <RootStack.Navigator
+      initialRouteName={initialRouteName}
+      screenOptions={{headerShown: false}}>
       <RootStack.Screen name="OnboardFlow" component={OnboardFlow} />
       <RootStack.Screen name="MainFlow" component={MainFlow} />
     </RootStack.Navigator>

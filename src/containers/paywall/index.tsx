@@ -8,6 +8,7 @@ import PremiumOptions from './premium-options';
 import {StackScreenProps} from '@react-navigation/stack';
 import {OnboardFlowParamList, RootStackParamList} from '../../navigation/types';
 import {CommonActions, CompositeScreenProps} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type Props = CompositeScreenProps<
   StackScreenProps<OnboardFlowParamList, 'Paywall'>,
@@ -35,6 +36,7 @@ const Paywall: React.FC<Props> = props => {
           text="Try free for 3 days"
           style={MARGINS.mt25}
           onPress={() => {
+            AsyncStorage.setItem('PLANT_APP_USED', '1');
             props.navigation.dispatch(
               CommonActions.reset({
                 index: 0,
