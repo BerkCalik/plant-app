@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
-import {Text} from '../../components';
+import {BottomBar, Text} from '../../components';
 import Header from './header';
 import Banner from './banner';
 import {COMMON_STYLES, MARGINS} from '../../theme';
@@ -11,7 +11,9 @@ const Home = () => {
   return (
     <View style={COMMON_STYLES.flex1}>
       <Header />
-      <ScrollView style={[COMMON_STYLES.flex1, styles.container]}>
+      <ScrollView
+        style={[COMMON_STYLES.flex1, styles.container]}
+        showsVerticalScrollIndicator={false}>
         <View style={[styles.content, MARGINS.mt25]}>
           <Banner />
           <Text size={15} w="500" style={[MARGINS.mt20, MARGINS.mb20]}>
@@ -25,6 +27,7 @@ const Home = () => {
           <Categories />
         </View>
       </ScrollView>
+      <BottomBar />
     </View>
   );
 };

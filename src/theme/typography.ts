@@ -1,3 +1,3 @@
 export default {
-  fontFamily: 'Rubik',
+  fontFamily: 'Rubik-Regular',
 };

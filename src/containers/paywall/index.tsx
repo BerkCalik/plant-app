@@ -1,5 +1,11 @@
 import React from 'react';
-import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {
+  Image,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import {COLORS, COMMON_STYLES, MARGINS, SCREEN_HEIGHT} from '../../theme';
 import {Button, Text} from '../../components';
 import Perks from './perks';
@@ -24,46 +30,47 @@ const Paywall: React.FC<Props> = props => {
         source={require('../../assets/images/paywall-bg.jpg')}
         style={[styles.background]}
       />
-      <Title />
-      <View style={[styles.perks]}>
-        <Perks />
-      </View>
+      <ScrollView>
+        <Title />
+        <View style={[styles.perks]}>
+          <Perks />
+        </View>
 
-      <View style={styles.form}>
-        <PremiumOptions value={selected} onChange={val => setSelected(val)} />
+        <View style={styles.form}>
+          <PremiumOptions value={selected} onChange={val => setSelected(val)} />
 
-        <Button
-          text="Try free for 3 days"
-          style={MARGINS.mt25}
-          onPress={() => {
-            AsyncStorage.setItem('PLANT_APP_USED', '1');
-            props.navigation.dispatch(
-              CommonActions.reset({
-                index: 0,
-                routes: [{name: 'MainFlow'}],
-              }),
-            );
-          }}
-        />
+          <Button
+            text="Try free for 3 days"
+            style={MARGINS.mt25}
+            onPress={() => {
+              AsyncStorage.setItem('PLANT_APP_USED', '1');
+              props.navigation.dispatch(
+                CommonActions.reset({
+                  index: 0,
+                  routes: [{name: 'MainFlow'}],
+                }),
+              );
+            }}
+          />
 
-        <Text
-          color="rgba(255, 255, 255, 0.52)"
-          size={9}
-          align="center"
-          style={MARGINS.mt10}>
-          After the 3-day free trial period you’ll be charged ₺274.99 per year
-          unless you cancel before the trial expires. Yearly Subscription is
-          Auto-Renewable
-        </Text>
-        <Text
-          color="rgba(255, 255, 255, 0.52)"
-          size={11}
-          align="center"
-          style={MARGINS.mt8}>
-          {'Terms  •  Privacy  •  Restore'}
-        </Text>
-      </View>
-
+          <Text
+            color="rgba(255, 255, 255, 0.52)"
+            size={9}
+            align="center"
+            style={MARGINS.mt10}>
+            After the 3-day free trial period you’ll be charged ₺274.99 per year
+            unless you cancel before the trial expires. Yearly Subscription is
+            Auto-Renewable
+          </Text>
+          <Text
+            color="rgba(255, 255, 255, 0.52)"
+            size={11}
+            align="center"
+            style={MARGINS.mt8}>
+            {'Terms  •  Privacy  •  Restore'}
+          </Text>
+        </View>
+      </ScrollView>
       <TouchableOpacity style={[styles.btnClose]}>
         <Image
           source={require('../../assets/icons/close.png')}

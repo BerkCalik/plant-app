@@ -4,4 +4,5 @@ export default {
   primary: '#28AF6E',
   primaryPressed: '#3deb97',
   greenDark: '#101E17',
+  white: '#ffffff',
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import {ImageBackground, SafeAreaView, StyleSheet, View} from 'react-native';
-import {COMMON_STYLES, MARGINS} from '../../theme';
+import {COLORS, COMMON_STYLES, MARGINS} from '../../theme';
 import {Button, Dots} from '../../components';
 import {OnboardFlowParamList} from '../../navigation/types';
 import {StackScreenProps} from '@react-navigation/stack';
@@ -33,14 +33,15 @@ const Onboarding: React.FC<Props> = props => {
   return (
     <ImageBackground source={PAGES[page].image} style={[COMMON_STYLES.flex1]}>
       <SafeAreaView style={[COMMON_STYLES.flex1, styles.container]}>
-        <View style={[COMMON_STYLES.contentBox]}>
+        <View
+          style={[COMMON_STYLES.contentBox, {backgroundColor: COLORS.white}]}>
           <Button text="Continue" onPress={onContinuePressed} />
+          <Dots
+            dotsCount={PAGES.length}
+            activeIndex={page}
+            style={[COMMON_STYLES.alignSelfCenter, MARGINS.mt20, MARGINS.mb10]}
+          />
         </View>
-        <Dots
-          dotsCount={PAGES.length}
-          activeIndex={page}
-          style={[COMMON_STYLES.alignSelfCenter, MARGINS.mt20]}
-        />
       </SafeAreaView>
     </ImageBackground>
   );
