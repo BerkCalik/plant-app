@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   itemContent: {
     paddingLeft: 14,
-    paddingTop: SCREEN_WIDTH * 0.28,
+    paddingTop: SCREEN_WIDTH * 0.26,
   },
   itemBgImageStyle: {
     borderRadius: 14,

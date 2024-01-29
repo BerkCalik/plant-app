@@ -2,6 +2,8 @@ import React from 'react';
 import {ImageBackground, SafeAreaView, StyleSheet, View} from 'react-native';
 import {COMMON_STYLES, MARGINS} from '../../theme';
 import {Button, Dots} from '../../components';
+import {OnboardFlowParamList} from '../../navigation/types';
+import {StackScreenProps} from '@react-navigation/stack';
 
 const PAGES = [
   {
@@ -15,12 +17,16 @@ const PAGES = [
   },
 ];
 
-const Onboarding = () => {
+type Props = StackScreenProps<OnboardFlowParamList, 'Onboarding'>;
+
+const Onboarding: React.FC<Props> = props => {
   const [page, setPage] = React.useState(0);
 
   const onContinuePressed = () => {
     if (page < 2) {
       setPage(page + 1);
+    } else {
+      props.navigation.navigate('Paywall');
     }
   };
 

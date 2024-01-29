@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <View style={COMMON_STYLES.flex1}>
       <Header />
-      <ScrollView style={COMMON_STYLES.flex1}>
+      <ScrollView style={[COMMON_STYLES.flex1, styles.container]}>
         <View style={[styles.content, MARGINS.mt25]}>
           <Banner />
           <Text size={15} w="500" style={[MARGINS.mt20, MARGINS.mb20]}>
@@ -32,6 +32,9 @@ const Home = () => {
 export default Home;
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FBFAFA',
+  },
   content: {
     paddingHorizontal: 24,
   },

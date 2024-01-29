@@ -10,8 +10,12 @@ import {Button} from '../../components';
 import {COMMON_STYLES, SCREEN_HEIGHT} from '../../theme';
 import Title from './title';
 import Terms from './terms';
+import {StackScreenProps} from '@react-navigation/stack';
+import {OnboardFlowParamList} from '../../navigation/types';
 
-const GetStarted = () => {
+type Props = StackScreenProps<OnboardFlowParamList, 'GetStarted'>;
+
+const GetStarted: React.FC<Props> = props => {
   return (
     <ImageBackground
       source={require('../../assets/images/background.jpg')}
@@ -23,7 +27,10 @@ const GetStarted = () => {
           style={styles.image}
         />
         <View style={[COMMON_STYLES.contentBox]}>
-          <Button text="Get Started" />
+          <Button
+            text="Get Started"
+            onPress={() => props.navigation.navigate('Onboarding')}
+          />
           <Terms />
         </View>
       </SafeAreaView>

@@ -5,8 +5,16 @@ import {Button, Text} from '../../components';
 import Perks from './perks';
 import Title from './title';
 import PremiumOptions from './premium-options';
+import {StackScreenProps} from '@react-navigation/stack';
+import {OnboardFlowParamList, RootStackParamList} from '../../navigation/types';
+import {CommonActions, CompositeScreenProps} from '@react-navigation/native';
 
-const Paywall = () => {
+type Props = CompositeScreenProps<
+  StackScreenProps<OnboardFlowParamList, 'Paywall'>,
+  StackScreenProps<RootStackParamList>
+>;
+
+const Paywall: React.FC<Props> = props => {
   const [selected, setSelected] = React.useState(0);
 
   return (
@@ -23,7 +31,18 @@ const Paywall = () => {
       <View style={styles.form}>
         <PremiumOptions value={selected} onChange={val => setSelected(val)} />
 
-        <Button text="Try free for 3 days" style={MARGINS.mt25} />
+        <Button
+          text="Try free for 3 days"
+          style={MARGINS.mt25}
+          onPress={() => {
+            props.navigation.dispatch(
+              CommonActions.reset({
+                index: 0,
+                routes: [{name: 'MainFlow'}],
+              }),
+            );
+          }}
+        />
 
         <Text
           color="rgba(255, 255, 255, 0.52)"

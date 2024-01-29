@@ -4,6 +4,7 @@ import GetStarted from './get-started';
 import Onboarding from './onboarding';
 import Paywall from './paywall';
 import Home from './home';
+import MainNavigator from '../navigation';
 
 const App = () => {
   return (
@@ -11,7 +12,8 @@ const App = () => {
       {/* <GetStarted /> */}
       {/* <Onboarding /> */}
       {/* <Paywall /> */}
-      <Home />
+      {/* <Home /> */}
+      <MainNavigator />
     </View>
   );
 };
