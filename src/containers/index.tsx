@@ -4,6 +4,8 @@ import MainNavigator from '../navigation';
 import {COMMON_STYLES} from '../theme';
 import {RootStackParamList} from '../navigation/types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Provider} from 'react-redux';
+import {store} from '../store';
 
 const App = () => {
   const [initialRouteName, setInitialRouteName] =
@@ -20,9 +22,11 @@ const App = () => {
 
   if (initialRouteName) {
     return (
-      <View style={COMMON_STYLES.flex1}>
-        <MainNavigator initialRouteName={initialRouteName} />
-      </View>
+      <Provider store={store}>
+        <View style={COMMON_STYLES.flex1}>
+          <MainNavigator initialRouteName={initialRouteName} />
+        </View>
+      </Provider>
     );
   }
 
